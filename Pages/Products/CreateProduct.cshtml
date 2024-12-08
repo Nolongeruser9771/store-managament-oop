@@ -1,0 +1,74 @@
+﻿@page "/product/create"
+@model CreateProductModel
+@{
+	ViewData["Title"] = "Create Product";
+}
+<div class="container mt-5">
+	<h1 class="mb-4">Create Product</h1>
+
+	<!-- Product Edit Form -->
+	<form method="post">
+		<!-- Product Name -->
+		<div class="mb-3">
+			<label for="productName" class="form-label">Product Name</label>
+			<input type="text" class="form-control" id="productName" name="productName" value="" required>
+		</div>
+
+		<!-- Product Price -->
+		<div class="mb-3">
+			<label for="productPrice" class="form-label">Product Price ($)</label>
+			<input type="number" class="form-control" id="productPrice" name="price" value="" step="0.01" min="0" required>
+		</div>
+
+		<!-- Product Quantity -->
+		<div class="mb-3">
+			<label for="productQuantity" class="form-label">Product Quantity</label>
+			<input type="number" class="form-control" id="productQuantity" name="stock" value="" required>
+		</div>
+
+		<!-- Product Expired Date -->
+		<div class="mb-3">
+			<label for="expiredDate" class="form-label">Expired Date</label>
+			<input type="date" class="form-control" id="expiredDate" name="expiredDate" required>
+		</div>
+
+		<!-- Product Manufacturer -->
+		<div class="mb-3">
+			<label for="productManufacturer" class="form-label">Product Manufacturer</label>
+			<input type="text" class="form-control" id="productManufacturer" name="manufacturer" value="" required>
+		</div>
+
+		<!-- Product Manufacturing Year -->
+		<div class="mb-3">
+			<label for="manufacturingYear" class="form-label">Product Manufacturing Year</label>
+			<input type="number" class="form-control" id="manufacturingYear" name="manufacturingYear" placeholder="e.g., 2024" min="1900" max="2100" required>
+		</div>
+
+		<!-- Product Category -->
+		<div class="mb-3">
+			<label for="productCategory" class="form-label">Product Category</label>
+			<!-- Category Dropdown -->
+			<select name="categoryId" class="form-select" style="width: 200px;">
+				@if (Model.CategoryList != null)
+				{
+					@foreach (var category in Model.CategoryList)
+					{
+						<option value="@category.categoryId">@category.categoryName</option>
+					}
+				}
+				else
+				{
+
+					<option value="" selected>No category</option>
+				}
+			</select>
+		</div>
+		<div class="text-danger">@Model.message</div>
+
+		<!-- Action Buttons -->
+		<div class="d-flex justify-content-between">
+			<button type="submit" class="btn btn-success">Create</button>
+			<a href="/" class="btn btn-secondary">Cancel</a>
+		</div>
+	</form>
+</div>

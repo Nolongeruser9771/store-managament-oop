@@ -1,0 +1,52 @@
+﻿@page "/purchase_invoices/create"
+@model store_managament_oop.Pages.PurchaseInvoices.CreatePurchaseInvoiceModel
+@{
+	ViewData["Title"] = "Create Purchase Invoice";
+}
+
+<div class="container mt-5">
+	<h1 class="mb-4">Create Purchase Invoice</h1>
+
+	<!-- Purchase Invoice Form -->
+	<form method="POST">
+		<!-- Provider Name -->
+		<div class="mb-3">
+			<label for="providerName" class="form-label">Provider Name</label>
+			<input type="text"
+				   class="form-control"
+				   id="providerName"
+				   name="providerName"
+				   required
+				   maxlength="100"
+				   placeholder="Enter provider name">
+		</div>
+
+		<!-- Staff Name -->
+		<div class="mb-3">
+			<label for="staffName" class="form-label">Staff Name</label>
+			<input type="text"
+				   class="form-control"
+				   id="staffName"
+				   name="staffName"
+				   required
+				   maxlength="100"
+				   placeholder="Enter staff name">
+		</div>
+
+		<!-- Invoice Date -->
+		<div class="mb-3">
+			<label for="invoiceDate" class="form-label">Invoice Date</label>
+			<input type="date"
+				   class="form-control"
+				   id="invoiceDate"
+				   name="invoiceDate"
+				   required>
+		</div>
+
+		<!-- Submit Button -->
+		<div class="mb-3">
+			<button type="submit" class="btn btn-success">Create Invoice</button>
+			<a href="/purchase_invoices" class="btn btn-secondary ml-2">Cancel</a>
+		</div>
+	</form>
+</div>

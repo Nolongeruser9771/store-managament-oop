@@ -1,0 +1,29 @@
+﻿@page "/categories/create"
+@model store_managament_oop.Pages.Categories.CreateCategoryModel
+@{
+    ViewData["Title"] = "Create Category";
+}
+<div class="container mt-5">
+    <h1 class="mb-4">Create Category</h1>
+
+    <!-- Category Creation Form -->
+    <form method="POST">
+        <div class="mb-3">
+            <label for="categoryName" class="form-label">Category Name</label>
+            <input type="text" class="form-control" id="categoryName" name="categoryName" value="" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="categoryDescription" class="form-label">Description</label>
+            <textarea class="form-control" id="categoryDescription" name="categoryDescription" rows="4" required></textarea>
+        </div>
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Create Category</button>
+            <a href="/categories" class="btn btn-secondary ml-2">Cancel</a>
+        </div>
+    </form>
+    @Model.message
+</div>
+
+

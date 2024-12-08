@@ -1,0 +1,86 @@
+﻿@page "/"
+@model ProductListModel
+@{
+	ViewData["Title"] = "Product List";
+}
+<div class="container mt-5">
+	<h1 class="mb-4">Product List</h1>
+
+	<!-- Search, Category, and Action Buttons Row -->
+	<div class="d-flex justify-content-between align-items-center mb-3">
+		<!-- Category Dropdown -->
+		<div class="d-flex align-items-center" style="gap: 10px;">
+			<form method="post" id="filterForm">
+				<select name="categoryId" class="form-select" style="width: 200px;" name="categoryId" onchange="document.getElementById('filterForm').submit();">
+					@if (Model.CategoryList != null)
+					{
+						@foreach (var category in Model.CategoryList)
+						{
+							if(category.categoryId == @Model.categoryId) {
+								<option value="@category.categoryId" selected>@category.categoryName</option>
+							} else {
+								<option value="@category.categoryId">@category.categoryName</option>
+							}
+						}
+					}
+					else
+					{
+
+						<option value="" selected>No category</option>
+					}
+				</select>
+			</form>
+
+			<!-- Search Input and Button -->
+			<form method="post">
+				<div class="input-group" style="width: 300px;">
+					<input type="text" class="form-control" placeholder="Search Products..." name="searchKeyword">
+					<button class="btn btn-secondary" type="submit">Search</button>
+				</div>
+			</form>
+		</div>
+
+		<!-- Action Buttons -->
+		<div class="d-flex" style="gap: 10px;">
+			<form method="post">
+				<button type="submit" name="action" value="expired" class="btn btn-danger">Expired Products</button>
+			</form>
+			<a href="/product/create" class="btn btn-primary">Create Product</a>
+		</div>
+	</div>
+	<div class="mb-2"><strong>Total:</strong> @Model.ProductList.Count items</div>
+	<!-- Product Table -->
+	<table class="table table-bordered">
+		<thead class="table-dark">
+			<tr>
+				<th>#</th>
+				<th>Product Name</th>
+				<th>Price ($)</th>
+				<th>Stock</th>
+				<th>Expired Date</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			@if (Model.ProductList != null)
+			{
+				@foreach (var product in Model.ProductList)
+				{
+					<tr>
+						<td>@product.productId</td>
+						<td>@product.productName</td>
+						<td>@product.price</td>
+						<td>@product.stock</td>
+						<td>@product.expiredDate</td>
+						<td>
+							<a href="/product/edit?productId=@product.productId" class="btn btn-warning btn-sm">Edit</a>
+							<a href="/product/delete?productId=@product.productId" class="btn btn-danger btn-sm">Delete</a>
+						</td>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</div>
+
+

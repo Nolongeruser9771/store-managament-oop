@@ -1,0 +1,40 @@
+﻿@page "/purchase_invoices/create_item"
+@model store_managament_oop.Pages.PurchaseInvoiceItems.CreatePurchaseInvoiceItemModel
+@{
+    ViewData["Title"] = "Create Purchase Invoice Item";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4">Create Purchase Invoice Item</h1>
+
+    <!-- Form to Create Purchase Invoice Item -->
+    <form method="POST">
+        <div class="mb-3">
+            <label for="productId" class="form-label">Product</label>
+            <select id="productId" name="ProductId" class="form-select" onchange="updatePrice()" required>
+                @if (Model.productList != null)
+                {
+                    foreach (var product in Model.productList)
+                    {
+                        <option value="@product.productId">@product.productName</option>
+                    }
+                }
+                else
+                {
+                    <option value="" selected>No products available</option>
+                }
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" id="quantity" name="Quantity" class="form-control" value=""  required>
+        </div>
+
+        <!-- Submit and Cancel Buttons -->
+        <div class="mb-3">
+            <button type="submit" class="btn btn-success">Save Item</button>
+            <a href="/purchase_invoices/edit?purchaseInvoiceId=@Model.purchaseInvoiceId" class="btn btn-secondary ml-2">Cancel</a>
+        </div>
+    </form>
+</div>

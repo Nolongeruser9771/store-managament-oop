@@ -1,0 +1,21 @@
+﻿@page "/categories/delete"
+@model store_managament_oop.Pages.Categories.DeleteCategoryModel
+@{
+	ViewData["Title"] = "Delete Category";
+}
+<div class="container mt-5">
+	<h1 class="mb-4">Delete Category</h1>
+
+	<!-- Category Deletion Confirmation -->
+	<form method="POST">
+		<div class="alert alert-warning" role="alert">
+			Are you sure you want to delete this category? This action cannot be undone.
+		</div>
+
+		<div class="mb-3">
+			<button type="submit" class="btn btn-danger">Delete Category</button>
+			<a href="/categories" class="btn btn-secondary ml-2">Cancel</a>
+		</div>
+	</form>
+	@Model.message
+</div>

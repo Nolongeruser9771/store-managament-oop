@@ -1,0 +1,12 @@
+﻿@page "/sales_invoices/delete_item"
+@model store_managament_oop.Pages.SalesInvoiceItems.DeleteSalesInvoiceItemModel
+@{
+}
+<h1>Delete Sales Invoice Item</h1>
+
+<p>Are you sure you want to delete this item?</p>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="/sales_invoices/edit?salesInvoiceId=@Model.salesInvoiceId" class="btn btn-secondary">Cancel</a>
+</form>

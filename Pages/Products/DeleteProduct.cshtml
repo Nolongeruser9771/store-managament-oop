@@ -1,0 +1,33 @@
+﻿@page "/product/delete"
+@model DeleteProductModel
+@{
+	ViewData["Title"] = "Delete Product";
+}
+<div class="container mt-5">
+	<h1 class="mb-4 text-danger">Delete Product</h1>
+
+	<!-- Delete Confirmation Section -->
+	<div class="alert alert-warning" role="alert">
+		<h4 class="alert-heading">Are you sure?</h4>
+		<p>You are about to delete the following product. This action cannot be undone.</p>
+	</div>
+
+	<!-- Product Details -->
+	<div class="card mb-4">
+		<div class="card-body">
+			<h5 class="card-title">Product Name: <span class="text-primary">@Model.product.productName</span></h5>
+			<p class="card-text">Price: $@Model.product.price</p>
+			<p class="card-text">Stock: @Model.product.stock</p>
+			<p class="card-text">Manufacturer: @Model.product.manufacturer</p>
+			<p class="card-text">Manufacturer Year: @Model.product.manufacturingYear</p>
+		</div>
+	</div>
+
+	<!-- Action Buttons -->
+	<div class="d-flex justify-content-between">
+		<form method="post" onsubmit="showToast(); return false;">
+			<button type="submit" class="btn btn-danger">Confirm Delete</button>
+		</form>
+		<a href="/" class="btn btn-secondary">Cancel</a>
+	</div>
+</div>
